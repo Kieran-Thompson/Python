@@ -7,7 +7,7 @@ class node:
 
     ##create node
     def __init__(self, data):
-        self._next = None
+        self.next = None
         self._data = data
 
     ##getter function for the data on the node
@@ -26,8 +26,8 @@ class linkedList:
         ##get the head of the LL
         currentNode = self._head
 
-        ##until the next one is not none, print it and move to the next element 
-        while (currentNode != None):
+        ##until the node is not none, print it and move to the next element 
+        while (currentNode):
             print(currentNode.getData())
             currentNode = currentNode.next
 
@@ -43,25 +43,46 @@ class linkedList:
         ##make the new head of the LL, the new head
         self._head = NodeToBeAdded
 
+    ##add nodes at the end of the LL
+    def addToEnd(self, data):
+
+        ##create the node
+        nodeToAdd = node(data)      
+
+        ##run through the linked list to the end
+        currentNode = self._head
+        while (currentNode.next):
+            currentNode = currentNode.next
+            
+        ##add the node to the lined list
+        currentNode.next = nodeToAdd
+        
+        
+
 ####things to add to this 
 ### add to middle
-### add to end
 
-
-
-##code
-def createLL():
-    newLL = linkedList()
-    return newLL
 
 def runAddToLL():
     LL = linkedList()
 
-    print("ADD TO START TEST")
     ##add to LL at the start 
-    LL.addToStart("Second")
-    LL.addToStart("First")
+    print("ADD TO START TEST")
+    
+    LL.addToStart("Two")
+    LL.addToStart("One")
+    LL.addToStart("Zero")
     LL.printLL()
+    print()
+    
+    ##add to LL at the end
+    print("ADD TO END TEST")
+    
+    LL.addToEnd("Three")
+    LL.addToEnd("Four")
+    LL.printLL()
+
+    
 
     
 runAddToLL()
