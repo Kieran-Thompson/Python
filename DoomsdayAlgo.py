@@ -10,7 +10,7 @@ class date:
     '''
     Date class
 
-    Contains the atomic data for a day
+    Contains the data for a day
     '''
 
     
@@ -75,7 +75,15 @@ class date:
 
     
     def calculateLeapYear(self):
-        if self.getDay() == 4:
+        '''Given the year as an int, return a boolean, based on if the year is a leap year'''
+        year = self.getYear()
+
+        ##divisible by 400
+        if year % 400 ==0:
+            return True
+
+        ##divisible by 4, not 100        
+        if year % 4 == 0 and year % 100 != 0:              
             return True
         else:
             return False
@@ -85,7 +93,7 @@ class date:
 def main():
     day1 = date()
     print("month " + str(day1.getMonth()))
-    
+    print("year " + str(day1.isLeapYear()))
     
 
 ##Run code
