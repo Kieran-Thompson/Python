@@ -10,11 +10,8 @@ tv_movies = {
     "Foyles's War":"https://www.imdb.com/title/tt0310455/fullcredits?ref_=tt_cl_sm#cast",
     "Morse":"https://www.imdb.com/title/tt0092379/fullcredits/?ref_=tt_ov_st_sm",
     "Midsomer Murders":"https://www.imdb.com/title/tt0118401/fullcredits/?ref_=tt_ov_st_sm",
-    "Schindlers List":"https://www.imdb.com/title/tt0076759/fullcredits/?ref_=tt_ov_st_sm",
     "Raiders of the Lost Ark":"https://www.imdb.com/title/tt0082971/fullcredits/?ref_=tt_ov_st_sm"
     }
-
-
 
 
 ##given the window object, return with altered settings
@@ -100,7 +97,7 @@ def resultsFrameSetup(window):
     search.pack()
 
     ##save to CSV file button
-    btnSave = tk.Button(resultsButtonFrame, text='Save Results',command= lambda: dataLog(searchFunction.get(),"dsa"))
+    btnSave = tk.Button(resultsButtonFrame, text='Save Results',command= lambda: dataLog(searchFunction.get(),results.get(1.0,tk.END)))
     btnSave.pack(side = tk.BOTTOM)
     
     return window
@@ -114,7 +111,7 @@ def searchIMDB(searchFunction, results,listbox):
     results.delete(1.0,tk.END)
     index = listbox.curselection()
     if index == ():
-        index = (0,)
+        results.insert(tk.INSERT, "!!!! Please select TV/movie(s)")
     if len(index) == 1:
         print(listbox.get(index))
     
@@ -131,9 +128,8 @@ def searchIMDB(searchFunction, results,listbox):
     
         ##place results in the window
         results.insert(tk.INSERT, str(CastList))
-    if len(index) == 2:
-        results.insert(tk.INSERT, "Two")
-        #####add stuff here for both checking 
+    if len(index) >= 2:
+        results.insert(tk.INSERT, "!!!!! Please de-select some TV/movie(s)")
 
 ##run the main application
 def main():
@@ -154,10 +150,6 @@ def main():
     window = resultsFrameSetup(window)
     
 
-
-
-
-    
       
     ##run the window object 
     window.mainloop()
