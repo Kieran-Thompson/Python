@@ -14,9 +14,6 @@ def twitterMain():
 
     date = datetime.datetime.now().strftime("%d\%m\%y")
     ##post image with pic
-    api.update_with_media('screenshot.PNG','Update ' + date)
-
-
-    
+    api.update_with_media('screenshot-figures.PNG',' Figure updates ' + date)
 
 
