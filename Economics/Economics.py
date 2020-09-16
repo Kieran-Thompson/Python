@@ -7,14 +7,14 @@ import pyautogui
 from twitterScript import *
 
 
-
-
 ##given the window object, return with altered settings
 def windowSettings(window):
 
     ##set the window size and app title text
     window.geometry('1200x500+0+0')
     window.title("Economics")
+
+    window.resizable(False, False)
 
     return window
 
@@ -28,16 +28,15 @@ def setBasicLabel(window, text_val, col_val, row_val):
     return labelObj
 
 ##screenshot the active window
-def screenShot():
+def screenShot(window):
 
-    ##simulate the keypress, up and down  
-    im = pyautogui.screenshot(region=(15, 150, 760, 270))
+    ## create a screenShot image 
+    im = pyautogui.screenshot(region=(window.winfo_x() + 15, window.winfo_y() + 150, 760, 270))
 
     im.save('screenshot-figures.png')
 
     ##post to twitter
     twitterMain()
-
 
 ##given the window, place the economic indicators on the screen
 def indicators(window):
@@ -47,7 +46,7 @@ def indicators(window):
     lblCPIHValue = setBasicLabel(window, "The value of CPIH is " + cpih_text + "%", 0, 2)
 
 
-    btn_screeenShot = tk.Button(window, text =" Screenshot and Post ", command = screenShot)
+    btn_screeenShot = tk.Button(window, text =" Screenshot and Post ", command = lambda: screenShot(window))
     btn_screeenShot.grid(column=1, row=2)
 
 
@@ -82,8 +81,9 @@ def main():
     space = setBasicLabel(window,"", 0, 7)
     note = setBasicLabel(window,"! - Please take down a note of these economic indicators.   ",0,8)
     
+
+    
     ##run the window object 
     window.mainloop()
-
 
 main()
