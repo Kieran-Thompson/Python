@@ -45,21 +45,16 @@ def indicators(window):
     cpih_text = EcoScrape.getDataFromWeb("https://www.ons.gov.uk/economy/inflationandpriceindices","p","stand-out")[1:-3]
     lblCPIHValue = setBasicLabel(window, "The value of CPIH is " + cpih_text + "%", 0, 2)
 
-
     btn_screeenShot = tk.Button(window, text =" Screenshot and Post ", command = lambda: screenShot(window))
     btn_screeenShot.grid(column=1, row=2)
-
 
     ##get the value of the Interest rate, place on screen as a label
     interestRate_text = EcoScrape.getDataFromWeb("https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp","p","stat-figure")
     lblIRValue = setBasicLabel(window,"The interest rate is " + interestRate_text , 0, 3)
 
-
     ##get unemployment value from the web
     unemployment_text = EcoScrape.getDataFromWeb("https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment","p","stand-out")[1:-3]
     lbl_UE_RateValue = setBasicLabel(window,"The unemployment rate is " + unemployment_text + " %" , 0, 4)
-
-
 
 ##run the main application
 def main():
@@ -80,8 +75,6 @@ def main():
 
     space = setBasicLabel(window,"", 0, 7)
     note = setBasicLabel(window,"! - Please take down a note of these economic indicators.   ",0,8)
-    
-
     
     ##run the window object 
     window.mainloop()
