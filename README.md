@@ -1,5 +1,5 @@
 # Python
-Some short Python programs (Not finshed/polished programs, sorry)
+Some short Python programs
 
 **Including:**
 - Twitter based Economics app 
